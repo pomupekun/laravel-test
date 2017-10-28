@@ -11,19 +11,13 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 Route::get('contact', 'PagesController@contact');
 Route::get('about', 'PagesController@about');
+Route::get('/', 'ArticlesController@index');
+Route::resource('articles', 'ArticlesController');
+Route::resource('posts', 'PostsController');
 
 // argicles
-Route::get('articles', 'ArticlesController@index');
-Route::get('articles/create', 'ArticlesController@create');
-Route::get('articles/{id}', 'ArticlesController@show');
-Route::post('articles', 'ArticlesController@store');
-Route::get('articles/{id}/edit', 'ArticlesController@edit');
-Route::patch('articles/{id}', 'ArticlesController@update');
-Route::delete('articles/{id}', 'ArticlesController@destroy');
-
 //Route::get('articles/create', 'ArticlesController@create');
 //Route::get('articles/{id}', 'ArticlesController@show');
 //Route::post('articles', 'ArticlesController@store');
@@ -32,53 +26,54 @@ Route::delete('articles/{id}', 'ArticlesController@destroy');
 //Route::delete('articles/{id}', 'ArticlesController@destroy');
 
 
-Route::get(
-	'articles',
-	array(
-		'as' => 'articles.index',
-		'uses' => 'ArticlesController@index'
-	)
-);
-Route::get(
-	'articles/create',
-	array(
-		'as' => 'articles.create',
-		'uses' => 'ArticlesController@create'
-	)
-);
-Route::get(
-	'articles/{id}',
-	array(
-		'as' => 'articles.show',
-		'uses' => 'ArticlesController@show'
-	)
-);
-Route::post(
-	'articles',
-	array(
-		'as' => 'articles.store',
-		'uses' => 'ArticlesController@store'
-	)
-);
-Route::get(
-	'articles.{id}/edit',
-	array(
-		'as' => 'articles.edit',
-		'uses' => 'ArticlesController@edit'
-	)
-);
-Route::patch(
-	'articles/{id}',
-	array(
-		'as' => 'articles.update',
-		'uses' => 'ArticlesController@update'
-	)
-);
-Route::delete(
-	'articles/{id}',
-	array(
-		'as' => 'articles.destroy',
-		'uses' => 'ArticlesController@destroy'
-	)
-);
+//Route::get(
+//	'articles',
+//	array(
+//		'as' => 'articles.index',
+//		'uses' => 'ArticlesController@index'
+//	)
+//);
+//Route::get(
+//	'articles/create',
+//	array(
+//		'as' => 'articles.create',
+//		'uses' => 'ArticlesController@create'
+//	)
+//);
+//Route::get(
+//	'articles/{id}',
+//	array(
+//		'as' => 'articles.show',
+//		'uses' => 'ArticlesController@show'
+//	)
+//);
+//Route::post(
+//	'articles',
+//	array(
+//		'as' => 'articles.store',
+//		'uses' => 'ArticlesController@store'
+//	)
+//);
+//Route::get(
+//	'articles.{id}/edit',
+//	array(
+//		'as' => 'articles.edit',
+//		'uses' => 'ArticlesController@edit'
+//	)
+//);
+//Route::patch(
+//	'articles/{id}',
+//	array(
+//		'as' => 'articles.update',
+//		'uses' => 'ArticlesController@update'
+//	)
+//);
+//Route::delete(
+//	'articles/{id}',
+//	array(
+//		'as' => 'articles.destroy',
+//		'uses' => 'ArticlesController@destroy'
+//	)
+//);
+
 

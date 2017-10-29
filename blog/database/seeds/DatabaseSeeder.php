@@ -5,8 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use Faker\Factory as Faker;
-use Carbon\Carbon;
 use App\Article;
+use App\User;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
+        $this->call('UsersTableSeeder');
         $this->call('ArticlesTableSeeder');
 
         Model::reguard();
@@ -28,20 +30,35 @@ class DatabaseSeeder extends Seeder
     }
 }
 
+class UsersTableSeeder extends Seeder{
+
+	public function run(){
+		DB::table('users')->delete();
+
+		User::create([
+			'name' => 'root',
+			'email' => 'root@example.com',
+			'password' => bcrypt('password')
+		]);
+	}
+}
+
 class ArticlesTableSeeder extends Seeder{
 
 	public function run(){
 
 		DB::table('articles')->delete();
 
+		$user = User::all()->first();
 		$faker = Faker::create('en_US');
 
 		for($i = 0; $i < 10; $i ++){
-			Article::create([
+			$article = new Article([
 				'title' => $faker->sentence(),
 				'body' => $faker->paragraph(),
-				'published_at' => Carbon::today()
+				'published_at' => Carbon::now()
 			]);
+			$user->articles()->save($article);
 		}
 	}
 }

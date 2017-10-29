@@ -29,7 +29,9 @@ class ArticlesController extends Controller
 	public function store(ArticleRequest $request){
 
 		// マスアサインメントを使ってDBに保存
-		Article::create($request->all());
+//		Article::create($request->all());
+
+		\Auth::user()->articles()->create($request->all());
 		\Session::flash('flash_message', '記事を追加しました。');
 		return redirect()->route('articles.index');
 	}
@@ -51,5 +53,9 @@ class ArticlesController extends Controller
 		$article->delete();
 		\Session::flash('flash_message', '記事を削除しました。');
 		return redirect()->route('articles.index');
+	}
+
+	public function user(){
+		return $this->belongsTo('App\User');
 	}
 }

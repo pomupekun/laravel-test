@@ -29,6 +29,7 @@ Route::get('/', 'ArticlesController@index');
 Route::resource('articles', 'ArticlesController');
 Route::resource('posts', 'PostsController');
 
+Route::get('hello', 'HelloController@index');
 
 // argicles
 //Route::get('articles/create', 'ArticlesController@create');

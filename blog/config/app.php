@@ -178,6 +178,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+	    // サービスプロバイダテスト用　追加
+	    App\Providers\HelloServiceProvider::class,
+
 	    Collective\Html\HtmlServiceProvider::class,
     ],
 
